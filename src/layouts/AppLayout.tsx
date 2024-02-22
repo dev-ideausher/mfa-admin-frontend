@@ -1,4 +1,3 @@
-import Sidebar from "@/app/_components/Sidebar";
 import SidebarLayout from "./SidebarLayout";
 
 const AppLayout = ({ children }: { children: React.ReactNode }) => {

@@ -1,5 +1,4 @@
 "use client";
-import React, { useState } from "react";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -9,6 +8,7 @@ import {
   UsergroupAddOutlined,
   InfoCircleOutlined,
 } from "@ant-design/icons";
+import { useState } from "react";
 import { ImSpoonKnife } from "react-icons/im";
 import { LuBrain, LuFileSpreadsheet } from "react-icons/lu";
 import { IoPeopleCircleOutline } from "react-icons/io5";
@@ -16,9 +16,10 @@ import { IoCalendarClearOutline } from "react-icons/io5";
 import { FiFlag } from "react-icons/fi";
 import Image from "next/image";
 import { Layout, Menu, Button, theme, Dropdown, MenuProps } from "antd";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import UserTab from "@/app/_components/UserTab";
 import UserTabCollapsed from "@/app/_components/UserTabCollapsed";
+import HeaderBar from "@/app/_components/HeaderBar";
 const { Header, Sider, Content } = Layout;
 
 const SidebarLayout = ({ children }: { children: React.ReactNode }) => {
@@ -28,7 +29,6 @@ const SidebarLayout = ({ children }: { children: React.ReactNode }) => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-  console.log(collapsed);
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -110,33 +110,32 @@ const SidebarLayout = ({ children }: { children: React.ReactNode }) => {
           {collapsed ? <UserTabCollapsed /> : <UserTab />}
         </div>
       </Sider>
+
       <Layout>
         <Header
-          style={{ padding: 0, background: colorBgContainer, display: "flex" }}
+          style={{
+            paddingLeft: "2rem",
+            background: colorBgContainer,
+            display: "flex",
+            flexDirection: "column",
+            height: "8rem",
+          }}
         >
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: "16px",
-              width: 64,
-              height: 64,
-            }}
-          />
           <h1 className="font-bold" style={{ fontSize: "1.5rem" }}>
             {pathname.substring(1) !== "info-management"
               ? pathname.substring(1).toUpperCase()
               : "INFO MANAGEMENT"}
           </h1>
+          <HeaderBar />
         </Header>
         <Content
           style={{
             margin: "24px 16px",
-            padding: 24,
             minHeight: 280,
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
+            paddingLeft: 24,
+            paddingRight: 24,
+            // background: colorBgContainer,
+            // borderRadius: borderRadiusLG,
           }}
         >
           {children}

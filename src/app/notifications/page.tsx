@@ -1,4 +1,3 @@
-"use client";
 import AppLayout from "@/layouts/AppLayout";
 import React from "react";
 
