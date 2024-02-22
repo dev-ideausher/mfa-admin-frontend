@@ -18,6 +18,7 @@ import Image from "next/image";
 import { Layout, Menu, Button, theme, Dropdown, MenuProps } from "antd";
 import { useRouter, usePathname } from "next/navigation";
 import UserTab from "@/app/_components/UserTab";
+import UserTabCollapsed from "@/app/_components/UserTabCollapsed";
 const { Header, Sider, Content } = Layout;
 
 const SidebarLayout = ({ children }: { children: React.ReactNode }) => {
@@ -27,7 +28,7 @@ const SidebarLayout = ({ children }: { children: React.ReactNode }) => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-  console.log(pathname.substring(1));
+  console.log(collapsed);
   return (
     <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -106,7 +107,7 @@ const SidebarLayout = ({ children }: { children: React.ReactNode }) => {
           ]}
         />
         <div style={{ background: "#1a1a1a", padding: "0.5rem" }}>
-          <UserTab />
+          {collapsed ? <UserTabCollapsed /> : <UserTab />}
         </div>
       </Sider>
       <Layout>

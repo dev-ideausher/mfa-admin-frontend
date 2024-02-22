@@ -1,42 +1,30 @@
 "use client";
 import { MenuProps, Dropdown } from "antd";
+import { SettingFilled } from "@ant-design/icons";
+import { RiLogoutBoxFill } from "react-icons/ri";
+
 import Image from "next/image";
+import Link from "next/link";
 const UserTab = () => {
   const items: MenuProps["items"] = [
     {
       key: "1",
       label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          1st menu item
-        </a>
+        <Link href="/">
+          <SettingFilled />
+          <span className="ml-1 ">Settings</span>
+        </Link>
       ),
     },
     {
       key: "2",
       label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          2nd menu item
-        </a>
-      ),
-    },
-    {
-      key: "3",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.luohanacademy.com"
-        >
-          3rd menu item
-        </a>
+        <Link href="/" className="flex items-center">
+          <span className=" text-red-700">
+            <RiLogoutBoxFill />
+          </span>
+          <span className="ml-1 ">Logout</span>
+        </Link>
       ),
     },
   ];
