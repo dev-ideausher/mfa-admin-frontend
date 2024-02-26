@@ -118,7 +118,7 @@ const SidebarLayout = ({ children }: { children: React.ReactNode }) => {
             background: colorBgContainer,
             display: "flex",
             flexDirection: "column",
-            height: "8rem",
+            height: "4rem",
           }}
         >
           <h1 className="font-bold" style={{ fontSize: "1.5rem" }}>
@@ -126,14 +126,13 @@ const SidebarLayout = ({ children }: { children: React.ReactNode }) => {
               ? pathname.substring(1).toUpperCase()
               : "INFO MANAGEMENT"}
           </h1>
-          <HeaderBar />
         </Header>
         <Content
           style={{
-            margin: "24px 16px",
+            // margin: "24px 16px",
             minHeight: 280,
-            paddingLeft: 24,
-            paddingRight: 24,
+            // paddingLeft: 24,
+            // paddingRight: 24,
             // background: colorBgContainer,
             // borderRadius: borderRadiusLG,
           }}
