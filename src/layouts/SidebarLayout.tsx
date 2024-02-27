@@ -47,7 +47,7 @@ const SidebarLayout = ({ children }: { children: React.ReactNode }) => {
           mode="inline"
           defaultSelectedKeys={["users"]}
           onClick={({ key }) => router.push(`/${key}`)}
-          selectedKeys={[`${pathname.substring(1)}`]}
+          selectedKeys={[`${pathname.split("/")[1]}`]}
           items={[
             {
               key: "users",
@@ -112,21 +112,6 @@ const SidebarLayout = ({ children }: { children: React.ReactNode }) => {
       </Sider>
 
       <Layout>
-        <Header
-          style={{
-            paddingLeft: "2rem",
-            background: colorBgContainer,
-            display: "flex",
-            flexDirection: "column",
-            height: "4rem",
-          }}
-        >
-          <h1 className="font-bold" style={{ fontSize: "1.5rem" }}>
-            {pathname.substring(1) !== "info-management"
-              ? pathname.substring(1).toUpperCase()
-              : "INFO MANAGEMENT"}
-          </h1>
-        </Header>
         <Content
           style={{
             // margin: "24px 16px",

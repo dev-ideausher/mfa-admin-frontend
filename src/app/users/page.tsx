@@ -1,6 +1,7 @@
+"use client";
 import AppLayout from "@/layouts/AppLayout";
 import type { MenuProps } from "antd";
-import { Input, Dropdown, Button, Space, Table } from "antd";
+import { Input, Dropdown, Button, Space, Table, Menu } from "antd";
 import {
   SearchOutlined,
   FilterOutlined,
@@ -8,7 +9,8 @@ import {
   PlusOutlined,
 } from "@ant-design/icons";
 import HeaderBar from "../_components/HeaderBar";
-import TableUser from "../_components/TableUser";
+import TableUser from "./_components/TableUser";
+import { useRouter } from "next/navigation";
 
 const items: MenuProps["items"] = [
   {
@@ -148,7 +150,8 @@ const datasource = [
   },
 ];
 
-export default function page() {
+export default function Page() {
+  const router = useRouter();
   const header_items = [
     {
       key: "all-users",
@@ -161,7 +164,17 @@ export default function page() {
   ];
   return (
     <AppLayout>
-      <HeaderBar header_items={header_items} default={header_items[0]} />
+      <HeaderBar title="USERS" />
+      <Menu
+        style={{ padding: 0 }}
+        defaultSelectedKeys={["all-users"]}
+        theme="light"
+        mode="horizontal"
+        items={header_items}
+        onClick={({ key }) =>
+          router.push(key !== "all-users" ? `users/${key}` : "users")
+        }
+      />
       <div className="flex justify-between m-5">
         <div className="flex w-96 gap-5">
           <Input

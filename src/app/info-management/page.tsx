@@ -1,25 +1,9 @@
-import AppLayout from "@/layouts/AppLayout";
-import HeaderBar from "../_components/HeaderBar";
-
+import { redirect } from "next/navigation";
 export default function InfoMgmtPage() {
-  const header_items = [
-    {
-      key: "partnership",
-      label: "Partnership",
-    },
-    {
-      key: "privacy-policy",
-      label: "Privacy policy",
-    },
-    {
-      key: "terms-conditions",
-      label: "Terms and Conditions",
-    },
-  ];
+  redirect("/info-management/partnership");
   return (
-    <AppLayout>
-      <HeaderBar header_items={header_items} default={header_items[0]} />
-      <div>ingo mgmt</div>
-    </AppLayout>
+    <>
+      <div>info mgmt</div>
+    </>
   );
 }
