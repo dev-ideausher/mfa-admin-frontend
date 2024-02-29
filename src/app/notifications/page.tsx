@@ -6,6 +6,7 @@ const page = () => {
   return (
     <div>
       <HeaderBar title="NOTIFICATIONS" />
+      Notifications
     </div>
   );
 };
