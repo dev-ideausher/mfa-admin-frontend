@@ -1,9 +1,9 @@
-import AppLayout from "@/layouts/AppLayout";
+import HeaderBar from "../_components/HeaderBar";
 
 export default function RevenuePage() {
   return (
-    <AppLayout>
-      <div>Revenue</div>
-    </AppLayout>
+    <div>
+      <HeaderBar title="REVENUE" />
+    </div>
   );
 }

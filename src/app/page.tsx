@@ -1,14 +1,8 @@
-"use client";
-
 import AppLayout from "@/layouts/AppLayout";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  const router = useRouter();
-  useEffect(() => {
-    router.push("/users");
-  }, [router]);
+  redirect("/users");
   return (
     <AppLayout>
       <div>
