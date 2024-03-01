@@ -1,6 +1,6 @@
 "use client";
 import { Layout, theme } from "antd";
-const { Header, Sider, Content } = Layout;
+const { Header } = Layout;
 
 export default function HeaderBar({ title }: any) {
   const {

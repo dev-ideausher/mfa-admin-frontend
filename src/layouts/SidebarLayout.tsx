@@ -15,7 +15,15 @@ import { IoPeopleCircleOutline } from "react-icons/io5";
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { FiFlag } from "react-icons/fi";
 import Image from "next/image";
-import { Layout, Menu, Button, theme, Dropdown, MenuProps } from "antd";
+import {
+  Layout,
+  Menu,
+  Button,
+  theme,
+  Dropdown,
+  MenuProps,
+  ConfigProvider,
+} from "antd";
 import { usePathname, useRouter } from "next/navigation";
 import UserTab from "@/app/_components/UserTab";
 import UserTabCollapsed from "@/app/_components/UserTabCollapsed";
@@ -30,102 +38,110 @@ const SidebarLayout = ({ children }: { children: React.ReactNode }) => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   return (
-    <Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="demo-logo-vertical" />
-        <div style={{ padding: "10px", backgroundColor: "#1a1a1a" }}>
-          <Image
-            src="/images/mfa-logo-white.png"
-            width={120}
-            height={35}
-            alt="mfa-logo-white"
-          />
-        </div>
-        <Menu
-          style={{ backgroundColor: "#1A1A1A" }}
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={["users"]}
-          onClick={({ key }) => router.push(`/${key}`)}
-          selectedKeys={[`${pathname.split("/")[1]}`]}
-          items={[
-            {
-              key: "users",
-              icon: <UsergroupAddOutlined />,
-              label: "Users",
-            },
-            {
-              key: "revenue",
-              icon: <BarChartOutlined />,
-              label: "Revenue",
-            },
-            {
-              key: "info-management",
-              icon: <InfoCircleOutlined />,
-              label: "Info management",
-            },
-            {
-              key: "notifications",
-              icon: <BellOutlined />,
-              label: "Notifications",
-            },
-            {
-              key: "workout",
-              icon: <HeartOutlined />,
-              label: "Workout",
-            },
-            {
-              key: "nutrition",
-              icon: <ImSpoonKnife />,
-              label: "Nutrition",
-            },
-            {
-              key: "meditation",
-              icon: <LuBrain />,
-              label: "Meditation",
-            },
-            {
-              key: "community",
-              icon: <IoPeopleCircleOutline />,
-              label: "Community",
-            },
-            {
-              key: "events",
-              icon: <IoCalendarClearOutline />,
-              label: "Events",
-            },
-            {
-              key: "contests",
-              icon: <FiFlag />,
-              label: "Contests",
-            },
-            {
-              key: "blog",
-              icon: <LuFileSpreadsheet />,
-              label: "Blog",
-            },
-          ]}
-        />
-        <div style={{ background: "#1a1a1a", padding: "0.5rem" }}>
-          {collapsed ? <UserTabCollapsed /> : <UserTab />}
-        </div>
-      </Sider>
-
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "#333",
+        },
+      }}
+    >
       <Layout>
-        <Content
-          style={{
-            // margin: "24px 16px",
-            minHeight: 280,
-            // paddingLeft: 24,
-            // paddingRight: 24,
-            // background: colorBgContainer,
-            // borderRadius: borderRadiusLG,
-          }}
-        >
-          {children}
-        </Content>
+        <Sider trigger={null} collapsible collapsed={collapsed}>
+          <div className="demo-logo-vertical" />
+          <div style={{ padding: "10px", backgroundColor: "#1a1a1a" }}>
+            <Image
+              src="/images/mfa-logo-white.png"
+              width={120}
+              height={35}
+              alt="mfa-logo-white"
+            />
+          </div>
+          <Menu
+            style={{ backgroundColor: "#1A1A1A" }}
+            theme="dark"
+            mode="inline"
+            defaultSelectedKeys={["users"]}
+            onClick={({ key }) => router.push(`/${key}`)}
+            selectedKeys={[`${pathname.split("/")[1]}`]}
+            items={[
+              {
+                key: "users",
+                icon: <UsergroupAddOutlined />,
+                label: "Users",
+              },
+              {
+                key: "revenue",
+                icon: <BarChartOutlined />,
+                label: "Revenue",
+              },
+              {
+                key: "info-management",
+                icon: <InfoCircleOutlined />,
+                label: "Info management",
+              },
+              {
+                key: "notifications",
+                icon: <BellOutlined />,
+                label: "Notifications",
+              },
+              {
+                key: "workout",
+                icon: <HeartOutlined />,
+                label: "Workout",
+              },
+              {
+                key: "nutrition",
+                icon: <ImSpoonKnife />,
+                label: "Nutrition",
+              },
+              {
+                key: "meditation",
+                icon: <LuBrain />,
+                label: "Meditation",
+              },
+              {
+                key: "community",
+                icon: <IoPeopleCircleOutline />,
+                label: "Community",
+              },
+              {
+                key: "events",
+                icon: <IoCalendarClearOutline />,
+                label: "Events",
+              },
+              {
+                key: "contests",
+                icon: <FiFlag />,
+                label: "Contests",
+              },
+              {
+                key: "blog",
+                icon: <LuFileSpreadsheet />,
+                label: "Blog",
+              },
+            ]}
+          />
+          <div style={{ background: "#1a1a1a", padding: "0.5rem" }}>
+            {collapsed ? <UserTabCollapsed /> : <UserTab />}
+          </div>
+        </Sider>
+
+        <Layout>
+          <Content
+            style={{
+              // margin: "24px 16px",
+              minHeight: 280,
+              // paddingLeft: 24,
+              // paddingRight: 24,
+              // background: colorBgContainer,
+              // borderRadius: borderRadiusLG,
+            }}
+          >
+            {children}
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+    </ConfigProvider>
   );
 };
 
