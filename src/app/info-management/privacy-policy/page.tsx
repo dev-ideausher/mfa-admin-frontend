@@ -1,5 +1,6 @@
 "use client";
 import HeaderBar from "@/app/_components/HeaderBar";
+import TopMenu from "@/app/_components/TopMenu";
 import { Menu, Button } from "antd";
 import { useRouter } from "next/navigation";
 import { RiEdit2Fill } from "react-icons/ri";
@@ -23,14 +24,7 @@ export default function Page() {
   return (
     <div>
       <HeaderBar title="INFO MANAGEMENT" />
-      <Menu
-        style={{ padding: 0 }}
-        defaultSelectedKeys={["privacy-policy"]}
-        theme="light"
-        mode="horizontal"
-        items={header_items}
-        onClick={({ key }) => router.push(`${key}`)}
-      />
+      <TopMenu header_items={header_items} defaultKey="privacy-policy" />
 
       <div className="flex w-full">
         <div className="flex-1 bg-white m-5 shadow-md rounded p-5">

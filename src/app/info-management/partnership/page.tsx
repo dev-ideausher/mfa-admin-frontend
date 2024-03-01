@@ -1,8 +1,9 @@
 "use client";
 import HeaderBar from "@/app/_components/HeaderBar";
-import { Menu, Button } from "antd";
+import { Button } from "antd";
 import { useRouter } from "next/navigation";
 import FeatureBox from "./_components/FeatureBox";
+import TopMenu from "@/app/_components/TopMenu";
 export default function Page() {
   const router = useRouter();
   const header_items = [
@@ -22,14 +23,7 @@ export default function Page() {
   return (
     <div>
       <HeaderBar title="INFO MANAGEMENT" />
-      <Menu
-        style={{ padding: 0 }}
-        defaultSelectedKeys={["partnership"]}
-        theme="light"
-        mode="horizontal"
-        items={header_items}
-        onClick={({ key }) => router.push(`${key}`)}
-      />
+      <TopMenu header_items={header_items} defaultKey="partnership" />
       <div className="bg-white m-5 rounded shadow-md">
         <div className="flex p-5 justify-between">
           <div>

@@ -1,12 +1,10 @@
 import AppLayout from "@/layouts/AppLayout";
-import React from "react";
+import { redirect } from "next/navigation";
+import HeaderBar from "../_components/HeaderBar";
 
 const page = () => {
-  return (
-    <AppLayout>
-      <div>Workout</div>
-    </AppLayout>
-  );
+  redirect("/workout/exercises");
+  return <p>Workout</p>;
 };
 
 export default page;

@@ -1,7 +1,7 @@
 "use client";
 import AppLayout from "@/layouts/AppLayout";
 import type { MenuProps } from "antd";
-import { Input, Dropdown, Button, Space, Table, Menu } from "antd";
+import { Input, Dropdown, Button, Badge, Table, Menu } from "antd";
 import {
   SearchOutlined,
   FilterOutlined,
@@ -90,6 +90,31 @@ const columns = [
     title: "Status",
     dataIndex: "status",
     key: "status",
+    render: (status: string) => {
+      return status === "Active" ? (
+        <Badge
+          style={{
+            backgroundColor: "#E8FCF4",
+            paddingLeft: "0.5rem",
+            paddingRight: "0.5rem",
+            borderRadius: "0.5rem",
+          }}
+          color="#10935A"
+          text="Active"
+        />
+      ) : (
+        <Badge
+          style={{
+            backgroundColor: "#FFF0F0",
+            paddingLeft: "0.5rem",
+            paddingRight: "0.5rem",
+            borderRadius: "0.5rem",
+          }}
+          color="#D6052F"
+          text="Suspended"
+        />
+      );
+    },
   },
 ];
 const datasource = [
