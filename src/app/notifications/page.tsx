@@ -1,13 +1,14 @@
 "use client";
 import HeaderBar from "../_components/HeaderBar";
 import type { MenuProps } from "antd";
-import { useRouter } from "next/navigation";
 import { Input, Dropdown, Button, Space, Table, Menu } from "antd";
+import Link from "next/link";
 import {
   SearchOutlined,
   FilterOutlined,
   DownOutlined,
 } from "@ant-design/icons";
+import AddButton from "../_components/AddButton";
 
 const items: MenuProps["items"] = [
   {
@@ -48,8 +49,139 @@ const items: MenuProps["items"] = [
   },
 ];
 
+const columns = [
+  {
+    title: "User",
+    dataIndex: "user",
+    key: "user",
+    render: (user: any) => {
+      return <Link href={`/notifications/${user}`}>{user}</Link>;
+    },
+  },
+  {
+    title: "Date sent",
+    dataIndex: "datesent",
+    key: "datesent",
+    sorter: (a: any, b: any) => a.date - b.date,
+  },
+  {
+    title: "Type",
+    dataIndex: "type",
+    key: "type",
+  },
+  {
+    title: "Status",
+    dataIndex: "status",
+    key: "status",
+  },
+  {
+    title: "  ",
+    dataIndex: "delete",
+    key: "delete",
+  },
+];
+const data = [
+  {
+    key: "1",
+    user: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    datesent: "Feb 27, 2024, 23:57",
+    type: "Registered",
+    status: "Sent",
+  },
+  {
+    key: "2",
+    user: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    datesent: "Feb 27, 2024, 23:57",
+    type: "Partners",
+    status: "Sent",
+  },
+  {
+    key: "3",
+    user: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    datesent: "Feb 27, 2024, 23:57",
+    type: "Registered",
+    status: "Scheduled",
+  },
+  {
+    key: "4",
+    user: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    datesent: "Feb 27, 2024, 23:57",
+    type: "Registered",
+    status: "Scheduled",
+  },
+  {
+    key: "5",
+    user: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    datesent: "Feb 27, 2024, 23:57",
+    type: "Registered",
+    status: "Scheduled",
+  },
+  {
+    key: "6",
+    user: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    datesent: "Feb 27, 2024, 23:57",
+    type: "Registered",
+    status: "Scheduled",
+  },
+  {
+    key: "7",
+    user: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    datesent: "Feb 27, 2024, 23:57",
+    type: "Registered",
+    status: "Scheduled",
+  },
+  {
+    key: "8",
+    user: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    datesent: "Feb 27, 2024, 23:57",
+    type: "Registered",
+    status: "Scheduled",
+  },
+  {
+    key: "9",
+    user: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    datesent: "Feb 27, 2024, 23:57",
+    type: "Registered",
+    status: "Scheduled",
+  },
+  {
+    key: "10",
+    user: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    datesent: "Feb 27, 2024, 23:57",
+    type: "Registered",
+    status: "Scheduled",
+  },
+  {
+    key: "11",
+    user: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    datesent: "Feb 27, 2024, 23:57",
+    type: "Registered",
+    status: "Scheduled",
+  },
+  {
+    key: "13",
+    user: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    datesent: "Feb 27, 2024, 23:57",
+    type: "Registered",
+    status: "Scheduled",
+  },
+  {
+    key: "14",
+    user: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    datesent: "Feb 27, 2024, 23:57",
+    type: "Registered",
+    status: "Scheduled",
+  },
+  {
+    key: "15",
+    user: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    datesent: "Feb 27, 2024, 23:57",
+    type: "Registered",
+    status: "Scheduled",
+  },
+];
+
 const Page = () => {
-  const router = useRouter();
   return (
     <div>
       <HeaderBar title="NOTIFICATIONS" />
@@ -74,15 +206,10 @@ const Page = () => {
               <DownOutlined />
             </Button>
           </Dropdown>
-          <Button
-            type="primary"
-            danger
-            onClick={() => router.push("notifications/add")}
-          >
-            + New Notifications
-          </Button>
+          <AddButton btnText="+ New Notification" toRoute="notifications/add" />
         </div>
       </div>
+      <Table style={{ margin: 20 }} columns={columns} dataSource={data} />
     </div>
   );
 };
