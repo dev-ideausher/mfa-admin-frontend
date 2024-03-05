@@ -1,9 +1,10 @@
 "use client";
 import HeaderBar from "@/app/_components/HeaderBar";
 import TopMenu from "@/app/_components/TopMenu";
-import { Input, Dropdown, Button, Space, Table, Menu, MenuProps } from "antd";
+import { Input, Dropdown, Button, Row, Col, MenuProps } from "antd";
 import AddButton from "@/app/_components/AddButton";
 import { useRouter } from "next/navigation";
+import ImgCard from "@/app/_components/ImgCard";
 import {
   SearchOutlined,
   FilterOutlined,
@@ -93,6 +94,29 @@ export default function PlansPage() {
           <AddButton btnText="+ New Plan" toRoute="plans/add" />
         </div>
       </div>
+      <Row gutter={16} style={{ margin: 15 }}>
+        <Col className="gutter-row" span={6}>
+          <ImgCard />
+        </Col>
+        <Col className="gutter-row" span={6}>
+          <ImgCard />
+        </Col>
+        <Col className="gutter-row" span={6}>
+          <ImgCard />
+        </Col>
+        <Col className="gutter-row" span={6}>
+          <ImgCard />
+        </Col>
+        <Col className="gutter-row" span={6}>
+          <ImgCard />
+        </Col>
+        <Col className="gutter-row" span={6}>
+          <ImgCard />
+        </Col>
+        <Col className="gutter-row" span={6}>
+          <ImgCard />
+        </Col>
+      </Row>
     </div>
   );
 }

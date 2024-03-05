@@ -1,7 +1,7 @@
 "use client";
 import HeaderBar from "@/app/_components/HeaderBar";
 import TopMenu from "@/app/_components/TopMenu";
-import { Input, Dropdown, Button, Space, Table, Menu, MenuProps } from "antd";
+import { Input, Dropdown, Button, MenuProps, Row, Col, Card } from "antd";
 import { useRouter } from "next/navigation";
 import AddButton from "@/app/_components/AddButton";
 import {
@@ -9,6 +9,8 @@ import {
   FilterOutlined,
   DownOutlined,
 } from "@ant-design/icons";
+import Image from "next/image";
+import ImgCard from "@/app/_components/ImgCard";
 
 const items: MenuProps["items"] = [
   {
@@ -51,6 +53,7 @@ const items: MenuProps["items"] = [
 
 export default function ExercisesPage() {
   const router = useRouter();
+  const { Meta } = Card;
   const header_items = [
     {
       key: "exercises",
@@ -93,6 +96,29 @@ export default function ExercisesPage() {
           <AddButton btnText="+ New Exercise" toRoute="exercises/add" />
         </div>
       </div>
+      <Row gutter={16} style={{ margin: 15 }}>
+        <Col className="gutter-row" span={6}>
+          <ImgCard />
+        </Col>
+        <Col className="gutter-row" span={6}>
+          <ImgCard />
+        </Col>
+        <Col className="gutter-row" span={6}>
+          <ImgCard />
+        </Col>
+        <Col className="gutter-row" span={6}>
+          <ImgCard />
+        </Col>
+        <Col className="gutter-row" span={6}>
+          <ImgCard />
+        </Col>
+        <Col className="gutter-row" span={6}>
+          <ImgCard />
+        </Col>
+        <Col className="gutter-row" span={6}>
+          <ImgCard />
+        </Col>
+      </Row>
     </div>
   );
 }
