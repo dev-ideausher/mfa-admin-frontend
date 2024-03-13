@@ -97,7 +97,11 @@ export default function ExercisesPage() {
         </div>
       </div>
       <Row gutter={16} style={{ margin: 15 }}>
-        <Col className="gutter-row" span={6}>
+        <Col
+          className="gutter-row"
+          span={6}
+          onClick={() => router.push("exercises/234")}
+        >
           <ImgCard />
         </Col>
         <Col className="gutter-row" span={6}>

@@ -95,7 +95,11 @@ export default function PlansPage() {
         </div>
       </div>
       <Row gutter={16} style={{ margin: 15 }}>
-        <Col className="gutter-row" span={6}>
+        <Col
+          className="gutter-row"
+          span={6}
+          onClick={() => router.push("plans/1234")}
+        >
           <ImgCard />
         </Col>
         <Col className="gutter-row" span={6}>
