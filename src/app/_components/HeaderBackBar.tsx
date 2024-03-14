@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { IoArrowBack } from "react-icons/io5";
 
-export default function HeaderBackBar({ title }: any) {
+export default function HeaderBackBar({ title }: { title: string }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);

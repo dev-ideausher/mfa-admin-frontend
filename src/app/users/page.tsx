@@ -1,5 +1,4 @@
 "use client";
-import AppLayout from "@/layouts/AppLayout";
 import type { MenuProps } from "antd";
 import { Input, Dropdown, Button, Badge, Table, Menu } from "antd";
 import {
@@ -11,6 +10,7 @@ import {
 import HeaderBar from "../_components/HeaderBar";
 import TableUser from "./_components/TableUser";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const items: MenuProps["items"] = [
   {
@@ -60,6 +60,10 @@ const columns = [
     title: "User",
     dataIndex: "user",
     key: "user",
+    render: (text: string, row: any) => (
+      //@ts-ignore
+      <TableUser user={row} />
+    ),
   },
   {
     title: "Type",
@@ -121,57 +125,14 @@ const datasource = [
   {
     key: 1,
     userid: 23,
-    user: <TableUser />,
+    username: "John Travolta",
+    phno: "+1 53268 23425",
     type: "Individual",
     date_joined: "31 March 2024",
     followers: 12,
     following: 34,
     posts: 2,
     status: "Active",
-  },
-  {
-    key: 1,
-    userid: 23,
-    user: <TableUser />,
-    type: "Individual",
-    date_joined: "31 March 2024",
-    followers: 12,
-    following: 34,
-    posts: 2,
-    status: "Active",
-  },
-  {
-    key: 1,
-    userid: 23,
-    user: <TableUser />,
-    type: "Individual",
-    date_joined: "31 March 2024",
-    followers: 12,
-    following: 34,
-    posts: 2,
-    status: "Suspended",
-  },
-  {
-    key: 1,
-    userid: 23,
-    user: <TableUser />,
-    type: "Individual",
-    date_joined: "31 March 2024",
-    followers: 12,
-    following: 34,
-    posts: 2,
-    status: "Active",
-  },
-  {
-    key: 1,
-    userid: 23,
-    user: <TableUser />,
-    type: "Individual",
-    date_joined: "31 March 2024",
-    followers: 12,
-    following: 34,
-    posts: 2,
-    status: "Suspended",
   },
 ];
 
@@ -188,7 +149,7 @@ export default function Page() {
     },
   ];
   return (
-    <AppLayout>
+    <>
       <HeaderBar title="USERS" />
       <Menu
         style={{ padding: 0 }}
@@ -226,6 +187,6 @@ export default function Page() {
       <div className="m-5">
         <Table columns={columns} dataSource={datasource} />
       </div>
-    </AppLayout>
+    </>
   );
 }

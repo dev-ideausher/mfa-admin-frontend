@@ -1,13 +1,16 @@
 import Image from "next/image";
-export default function TableUser() {
+import Link from "next/link";
+export default function TableUser({ user }: any) {
   return (
     <div className="flex gap-4 items-center cursor-pointer">
       <div>
         <Image src="/images/avatar.png" height={30} width={30} alt="avatar" />
       </div>
       <div>
-        <p className="font-semibold">Henry Fiat</p>
-        <p className="text-xs text-gray-600">+1 53268 23425</p>
+        <Link href={`/users/${user.userid}`}>
+          <p className="font-semibold text-blue-600">{user.username}</p>
+        </Link>
+        <p className="text-xs text-gray-600">{user.phno}</p>
       </div>
     </div>
   );
