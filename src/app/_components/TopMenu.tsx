@@ -1,7 +1,13 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { Menu } from "antd";
-export default function TopMenu({ header_items, defaultKey }: any) {
+export default function TopMenu({
+  header_items,
+  defaultKey,
+}: {
+  header_items: any;
+  defaultKey: string;
+}) {
   const router = useRouter();
   return (
     <Menu

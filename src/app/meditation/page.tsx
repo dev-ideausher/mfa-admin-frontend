@@ -1,12 +1,8 @@
-import AppLayout from "@/layouts/AppLayout";
-import React from "react";
+import { redirect } from "next/navigation";
 
 const page = () => {
-  return (
-    <AppLayout>
-      <div>Meditation</div>
-    </AppLayout>
-  );
+  redirect("/meditation/meditations");
+  return <div></div>;
 };
 
 export default page;

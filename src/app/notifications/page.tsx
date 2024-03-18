@@ -54,8 +54,8 @@ const columns = [
     title: "User",
     dataIndex: "user",
     key: "user",
-    render: (user: any) => {
-      return <Link href={`/notifications/${user}`}>{user}</Link>;
+    render: (user: any, row: any) => {
+      return <Link href={`/notifications/${row.key}`}>{user}</Link>;
     },
   },
   {

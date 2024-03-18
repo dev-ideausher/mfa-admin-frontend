@@ -174,7 +174,7 @@ export default function page() {
               <DownOutlined />
             </Button>
           </Dropdown>
-          <AddButton btnText="+ New Ingredient" toRoute="exercises/add" />
+          <AddButton btnText="+ New Ingredient" toRoute="ingredients/add" />
         </div>
       </div>
       <Table style={{ margin: 20 }} columns={columns} dataSource={data} />
