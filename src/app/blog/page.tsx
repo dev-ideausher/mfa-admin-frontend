@@ -1,12 +1,7 @@
-import AppLayout from "@/layouts/AppLayout";
-import React from "react";
+import { redirect } from "next/navigation";
 
 const page = () => {
-  return (
-    <AppLayout>
-      <div>Blog</div>
-    </AppLayout>
-  );
+  redirect("/blog/posts");
 };
 
 export default page;
