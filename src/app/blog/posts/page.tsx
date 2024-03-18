@@ -1,13 +1,14 @@
 "use client";
 import HeaderBar from "@/app/_components/HeaderBar";
 import { useRouter } from "next/navigation";
-import { Input, Dropdown, Button, Space, Table, Menu } from "antd";
+import { Input, Dropdown, Button, Space, Table, Menu, Tag } from "antd";
 import type { MenuProps } from "antd";
 import {
   SearchOutlined,
   FilterOutlined,
   DownOutlined,
 } from "@ant-design/icons";
+import { SlOptionsVertical } from "react-icons/sl";
 import AddButton from "@/app/_components/AddButton";
 import PostTab from "../_components/PostTab";
 
@@ -59,6 +60,9 @@ const columns = [
     title: "Post",
     dataIndex: "post",
     key: "post",
+    render: (text: string, row: any) => (
+      <PostTab title={text} postId={row.id} />
+    ),
   },
   {
     title: "Date created",
@@ -74,36 +78,73 @@ const columns = [
     title: "Activity Status",
     dataIndex: "activity_status",
     key: "activity_status",
+    render: (status: string) =>
+      status == "Active" ? (
+        <Tag color="green">● Active</Tag>
+      ) : (
+        <Tag color="red">● Inactive</Tag>
+      ),
+  },
+  {
+    title: "Actions",
+    key: "actions",
+    render: (text: any, record: any) => (
+      <Dropdown
+        overlay={
+          <Menu>
+            <Menu.Item key="1">
+              <Button type="link" onClick={() => console.log(record.key)}>
+                Update
+              </Button>
+            </Menu.Item>
+            <Menu.Item key="2">
+              <Button type="link" onClick={() => console.log(record.key)}>
+                Delete
+              </Button>
+            </Menu.Item>
+          </Menu>
+        }
+        trigger={["click"]}
+      >
+        <Button style={{ border: 0 }}>
+          <SlOptionsVertical />
+        </Button>
+      </Dropdown>
+    ),
   },
 ];
 const data = [
   {
+    id: 1,
     priority: 1,
-    post: <PostTab />,
+    post: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam dignissimos odit.",
     date_created: "May 23, 2023",
     views: 12,
     activity_status: "Active",
   },
   {
+    id: 2,
     priority: 1,
-    post: <PostTab />,
+    post: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam dignissimos odit.",
+    date_created: "May 23, 2023",
+    views: 12,
+    activity_status: "Inactive",
+  },
+  {
+    id: 3,
+    priority: 1,
+    post: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam dignissimos odit.",
     date_created: "May 23, 2023",
     views: 12,
     activity_status: "Active",
   },
   {
+    id: 4,
     priority: 1,
-    post: <PostTab />,
+    post: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam dignissimos odit.",
     date_created: "May 23, 2023",
     views: 12,
-    activity_status: "Active",
-  },
-  {
-    priority: 1,
-    post: <PostTab />,
-    date_created: "May 23, 2023",
-    views: 12,
-    activity_status: "Active",
+    activity_status: "Inactive",
   },
 ];
 const header_items = [
@@ -153,7 +194,7 @@ export default function PostsPage() {
           <AddButton btnText="+ New Post" toRoute="/blog/add-blog" />
         </div>
       </div>
-      <div>
+      <div className="mx-5">
         <Table dataSource={data} columns={columns} />
       </div>
     </>
