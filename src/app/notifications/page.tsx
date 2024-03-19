@@ -1,7 +1,7 @@
 "use client";
 import HeaderBar from "../_components/HeaderBar";
 import type { MenuProps } from "antd";
-import { Input, Dropdown, Button, Space, Table, Menu } from "antd";
+import { Input, Dropdown, Button, Space, Table, Menu, Tag } from "antd";
 import Link from "next/link";
 import {
   SearchOutlined,
@@ -73,11 +73,12 @@ const columns = [
     title: "Status",
     dataIndex: "status",
     key: "status",
-  },
-  {
-    title: "  ",
-    dataIndex: "delete",
-    key: "delete",
+    render: (text: string) =>
+      text === "Sent" ? (
+        <Tag color="green">● Sent</Tag>
+      ) : (
+        <Tag color="gray">● Scheduled</Tag>
+      ),
   },
 ];
 const data = [
