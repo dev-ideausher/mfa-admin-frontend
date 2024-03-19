@@ -71,9 +71,13 @@ const columns = [
     key: "winners",
     render: (status: string) =>
       status == "Announced" ? (
-        <Tag color="green">● Announced</Tag>
+        <Tag bordered={false} color="green">
+          ● Announced
+        </Tag>
       ) : (
-        <Tag color="gray">● Unannounced</Tag>
+        <Tag bordered={false} color="gray">
+          ● Unannounced
+        </Tag>
       ),
   },
   {
@@ -82,9 +86,13 @@ const columns = [
     key: "activity_status",
     render: (status: string) =>
       status == "Active" ? (
-        <Tag color="green">● Active</Tag>
+        <Tag bordered={false} color="green">
+          ● Active
+        </Tag>
       ) : (
-        <Tag color="red">● Expired</Tag>
+        <Tag bordered={false} color="red">
+          ● Expired
+        </Tag>
       ),
   },
   {

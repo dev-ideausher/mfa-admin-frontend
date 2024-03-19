@@ -28,11 +28,7 @@ export default function AddContest() {
           <div className="mb-4 cursor-pointer">
             <p className="font-semibold">Upload Thumbnail</p>
             <p className="text-gray-500">(JPG, PNG, WEBP, SVG) (800*600)</p>
-            <div className="border-dashed border-[1px] border-gray-400 rounded-lg p-8 text-center">
-              <input type="file" accept="image/*" className="hidden" />
-              <UploadOutlined />
-              <p>Upload or select file</p>
-            </div>
+            <input type="file" accept="image/*" />
           </div>
           <div className="mb-2">
             <p className=" font-semibold">Challenge Title</p>

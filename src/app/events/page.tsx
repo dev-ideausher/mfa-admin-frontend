@@ -1,12 +1,7 @@
-import AppLayout from "@/layouts/AppLayout";
-import React from "react";
+import { redirect } from "next/navigation";
 
 const page = () => {
-  return (
-    <AppLayout>
-      <div>Events</div>
-    </AppLayout>
-  );
+  redirect("/events/all-events");
 };
 
 export default page;

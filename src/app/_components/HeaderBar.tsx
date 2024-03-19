@@ -2,7 +2,7 @@
 import { Layout, theme } from "antd";
 const { Header } = Layout;
 
-export default function HeaderBar({ title }: any) {
+export default function HeaderBar({ title }: { title: string }) {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
