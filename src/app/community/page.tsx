@@ -1,12 +1,7 @@
-import AppLayout from "@/layouts/AppLayout";
-import React from "react";
+import { redirect } from "next/navigation";
 
 const page = () => {
-  return (
-    <AppLayout>
-      <div>Community</div>
-    </AppLayout>
-  );
+  redirect("/community/all-posts");
 };
 
 export default page;

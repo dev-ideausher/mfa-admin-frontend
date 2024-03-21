@@ -10,7 +10,6 @@ import {
 import HeaderBar from "../_components/HeaderBar";
 import TableUser from "./_components/TableUser";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 const items: MenuProps["items"] = [
   {
