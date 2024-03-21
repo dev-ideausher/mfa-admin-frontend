@@ -1,12 +1,18 @@
 "use client";
 import HeaderBackBar from "@/app/_components/HeaderBackBar";
 import { UploadOutlined } from "@ant-design/icons";
+import { useState, useRef } from "react";
 // import { useState } from "react";
 // import ReactQuill from "react-quill";
 // import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
+const JoditEditor = dynamic(() => import("jodit-react"), {
+  ssr: false,
+});
 export default function AddBlogPage() {
   // const [convertedText, setConvertedText] = useState("Some default content");
-
+  const editor = useRef(null);
+  const [content, setContent] = useState("");
   return (
     <div>
       <HeaderBackBar title="NEW POST" />
@@ -60,14 +66,13 @@ export default function AddBlogPage() {
         </div>
         <div className="col-span-8 bg-white rounded-md m-5 p-3">
           <p className="font-semibold mb-2">Article</p>
-          {/* <div>
-            <ReactQuill
-              theme="snow"
-              value={convertedText}
-              onChange={setConvertedText}
-              style={{ minHeight: "300px" }}
+          <div>
+            <JoditEditor
+              ref={editor}
+              value={content}
+              onBlur={(newContent) => setContent(newContent)}
             />
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
