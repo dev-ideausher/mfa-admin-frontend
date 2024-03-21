@@ -1,7 +1,11 @@
-import TopMenu from "@/app/_components/TopMenu";
+"use client";
 import Post from "../../_components/Post";
 import PostTopBar from "../../_components/PostTopBar";
+import { useState } from "react";
 import { Menu } from "antd";
+import CommentDiv from "./_components/CommentDiv";
+import LikesDiv from "./_components/LikesDiv";
+import ReportsDiv from "./_components/ReportsDiv";
 const header_items = [
   {
     key: "comments",
@@ -17,6 +21,7 @@ const header_items = [
   },
 ];
 export default function PostPage() {
+  const [renderDiv, setRenderDiv] = useState("comments");
   return (
     <div>
       <PostTopBar />
@@ -27,11 +32,15 @@ export default function PostPage() {
         <div className="col-span-1 bg-white rounded-md p-5 border-[1px] border-gray-200">
           <Menu
             style={{ padding: 0 }}
-            defaultSelectedKeys={["comments"]}
+            defaultSelectedKeys={[`${renderDiv}`]}
             theme="light"
             mode="horizontal"
             items={header_items}
+            onClick={({ key }) => setRenderDiv(key)}
           />
+          {renderDiv === "comments" && <CommentDiv />}
+          {renderDiv === "likes" && <LikesDiv />}
+          {renderDiv === "reports" && <ReportsDiv />}
         </div>
       </div>
     </div>

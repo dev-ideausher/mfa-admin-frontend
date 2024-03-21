@@ -2,15 +2,16 @@
 import HeaderBar from "@/app/_components/HeaderBar";
 import TopMenu from "@/app/_components/TopMenu";
 import type { MenuProps } from "antd";
-import { Input, Dropdown, Button, Badge, Table, Menu, Tag } from "antd";
+import { Input, Dropdown, Button, Table, Menu, Tag } from "antd";
 import {
   SearchOutlined,
   FilterOutlined,
   DownOutlined,
-  PlusOutlined,
+  DeleteOutlined,
 } from "@ant-design/icons";
 import PostTab from "../_components/PostTab";
 import UserTab from "../_components/UserTab";
+import { SlOptionsVertical } from "react-icons/sl";
 
 const header_items = [
   {
@@ -62,7 +63,7 @@ const items: MenuProps["items"] = [
 ];
 const data = [
   {
-    id: "1",
+    key: "1",
     post: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
     user: "Dana White",
     date_created: "21 Jan 2024",
@@ -71,7 +72,7 @@ const data = [
     status: "Active",
   },
   {
-    id: "2",
+    key: "2",
     post: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
     user: "Dana White",
     date_created: "21 Jan 2024",
@@ -80,7 +81,7 @@ const data = [
     status: "Active",
   },
   {
-    id: "3",
+    key: "3",
     post: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
     user: "Dana White",
     date_created: "21 Jan 2024",
@@ -122,10 +123,42 @@ const columns = [
     key: "status",
     render: (status: string) =>
       status === "Active" ? (
-        <Tag color="green">Active</Tag>
+        <Tag color="green">● Active</Tag>
       ) : (
-        <Tag color="red">Suspended</Tag>
+        <Tag color="red">● Suspended</Tag>
       ),
+  },
+  {
+    title: "Actions",
+    key: "actions",
+    render: (text: any, row: any) => (
+      <Dropdown
+        //@ts-ignore
+        menu={{
+          items: [
+            {
+              key: "suspend",
+              label: (
+                <Button
+                  style={{ display: "flex", alignItems: "center" }}
+                  type="text"
+                  danger
+                  className="text-red-800"
+                  onClick={() => console.log(row.key)}
+                >
+                  <DeleteOutlined />
+                  Suspend
+                </Button>
+              ),
+            },
+          ],
+        }}
+      >
+        <Button style={{ border: 0 }}>
+          <SlOptionsVertical />
+        </Button>
+      </Dropdown>
+    ),
   },
 ];
 const page = () => {

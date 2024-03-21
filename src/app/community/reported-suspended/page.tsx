@@ -7,10 +7,11 @@ import {
   SearchOutlined,
   FilterOutlined,
   DownOutlined,
-  PlusOutlined,
+  CheckOutlined,
 } from "@ant-design/icons";
 import PostTab from "../_components/PostTab";
 import UserTab from "../_components/UserTab";
+import { SlOptionsVertical } from "react-icons/sl";
 
 const header_items = [
   {
@@ -62,7 +63,7 @@ const items: MenuProps["items"] = [
 ];
 const data = [
   {
-    id: "1",
+    key: "1",
     post: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
     user: "Dana White",
     date_created: "21 Jan 2024",
@@ -72,7 +73,7 @@ const data = [
     reports: 21,
   },
   {
-    id: "2",
+    key: "2",
     post: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
     user: "Dana White",
     date_created: "21 Jan 2024",
@@ -82,7 +83,7 @@ const data = [
     reports: 11,
   },
   {
-    id: "3",
+    key: "3",
     post: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
     user: "Dana White",
     date_created: "21 Jan 2024",
@@ -130,10 +131,42 @@ const columns = [
     key: "status",
     render: (status: string) =>
       status === "Active" ? (
-        <Tag color="green">Active</Tag>
+        <Tag color="green">● Active</Tag>
       ) : (
-        <Tag color="red">Suspended</Tag>
+        <Tag color="red">● Suspended</Tag>
       ),
+  },
+  {
+    title: "Actions",
+    key: "actions",
+    render: (text: any, row: any) => (
+      <Dropdown
+        menu={{
+          items: [
+            {
+              key: "suspend",
+              label: (
+                <Button
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    color: "green",
+                  }}
+                  type="text"
+                  onClick={() => console.log(row.id)}
+                >
+                  <CheckOutlined /> Revoke suspension
+                </Button>
+              ),
+            },
+          ],
+        }}
+      >
+        <Button style={{ border: 0 }}>
+          <SlOptionsVertical />
+        </Button>
+      </Dropdown>
+    ),
   },
 ];
 const page = () => {
